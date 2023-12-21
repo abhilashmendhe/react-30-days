@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX Elements</title>
+    <style>
+        * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        line-height: 1.5;
+        font-family: 'Montserrat';
+        font-weight: 300;
+        color: black;
+      }
+
+      .root {
+        min-height: 100%;
+        position: relative;
+      }
+
+      .header-wrapper,
+      .main-wrapper,
+      .footer-wrapper {
+        width: 85%;
+        margin: auto;
+      }
+
+      .header-wrapper,
+      .main-wrapper {
+        padding: 10px;
+        margin: 2px auto;
+      }
+
+      h1 {
+        font-size: 70px;
+        font-weight: 300;
+      }
+
+      h2,
+      h3 {
+        font-weight: 300;
+      }
+
+      header {
+        background-color: #61dbfb;
+        padding: 10px;
+      }
+
+      main {
+        padding: 10px 10px 60px;
+        /* Height of the footer */
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        /* Height of the footer */background: #6cf;
+      }
+
+      .footer-wrapper {
+        font-weight: 400;
+        text-align: center;
+        line-height: 60px;
+      }
+    </style>
+</head>
+<body>
+    <div class="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script><script type="text/babel">
+        const rootElement = document.querySelector('.root')
+        // const jsxElement = <h1>I am JSX Element</h1>
+        const welcome = "Welcome to 30 Days of React";
+        const title = "Getting Started with React";
+        const subTitle = "JavaScript Library";
+        const author = {
+            first:"Abhilash",
+            last:"Mendhe",
+        }
+        const date = new Date().toDateString();
+        const header = (
+            
+            <header >
+                <h1>{welcome}</h1>
+                <h2>{title}</h2>
+                <h3>{subTitle}</h3>
+                <p>{author.first} {author.last}</p>
+                <small>{date}</small>
+            </header>
+        )
+        const techs = ["HTML","CSS","JavaScript"];
+        const techFormated = techs.map((tech)=><li key={tech}>{tech}</li>)
+        const main = (
+            <main>
+                <p>Prerequisite to get started <strong><em>react.js:</em></strong></p>
+                <ul>
+                    {techFormated}
+                </ul>
+            </main>
+        )
+        const footer = (
+            <footer><p>Copyright {new Date().getFullYear()}</p></footer>
+        )
+
+        const app = (
+            <div>
+                {header}
+                {main} 
+                {footer}
+            </div>
+        )
+        const root = ReactDOM.createRoot(rootElement)
+        root.render(app)
+    </script>
+</body>
+</html>
