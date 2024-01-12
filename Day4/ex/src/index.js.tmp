@@ -1,0 +1,49 @@
+// first import react and react-dom packages
+import React from 'react'
+import ReactDOM  from 'react-dom/client'
+// import abhiImg from './images/img1.jpg'
+
+
+// JS function
+// const getUserInfo = (fname,lname,residence,skills) => {
+//     return `${fname} ${lname}, a developer in ${residence}. He knows ${skills.join(', ')}`
+// }
+// const skills = ['HTML','CSS','JS','React']
+// console.log(getUserInfo('Abhilash','Mendhe','CH',skills))
+
+// JS Class
+class Parent {
+    constructor(fname, lname, residence, skills){
+        this.firstname = fname
+        this.lastnmae = lname
+        this.residence = residence
+        this.skills = skills
+    }
+    getPersonInfo(){
+        return `${this.firstname} ${this.lastnmae}, a developer in ${this.residence}. He knows ${this.skills.join(', ')}`
+    }
+}
+class Child extends Parent{
+    constructor(fname, lname, residence, skills, title){
+      super(fname, lname, residence, skills)
+      this.title = title
+    }
+    getPersonInfo(){
+        return `${this.title} ${this.firstname} ${this.lastnmae}, a developer in ${this.residence}. He knows ${this.skills.join(', ')}`
+    }
+}
+const p1 = new Parent("Abhilash","Mendhe","CH",['HTML','CSS','JS'])
+const p2 = new Child("Abhi","Menda","Swiss",["HTML","CSS","C++","Java","Golang"],"Mr.")
+const app = (
+    <div>
+        {p1.getPersonInfo()}
+        <br />
+        {p2.getPersonInfo()}
+        {/* {getUserInfo('Abhi','Menda','CH',skills)} */}
+        <h1>Hello React Components</h1>
+    </div>
+)
+
+const rootElem = document.getElementById("root")
+const root = ReactDOM.createRoot(rootElem)
+root.render(app)
